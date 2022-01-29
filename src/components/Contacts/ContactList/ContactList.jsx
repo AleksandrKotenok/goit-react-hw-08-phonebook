@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { getFilter } from '../../redux/contacts-selectors';
-import { useFetchAPIQuery } from '../../redux/api';
+import { getFilter } from '../../../redux/contacts-selectors';
+import { useFetchAPIQuery } from '../../../redux/api';
 import { ContactItem } from './ContactItem/ContactItem';
 
-import s from '../ContactList/ContactList.module.css';
+import s from './ContactList.module.css';
 
-export const ContactList = () => {
+export default function ContactList() {
   const filterValue = useSelector(getFilter);
   const { data } = useFetchAPIQuery(filterValue);
 
@@ -16,4 +16,4 @@ export const ContactList = () => {
       </ul>
     </section>
   );
-};
+}

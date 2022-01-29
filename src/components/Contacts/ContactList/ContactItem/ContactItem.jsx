@@ -1,5 +1,5 @@
-import { useDeleteContactMutation } from '../../../redux/api';
-import s from '../ContactItem/ContactItem.module.css';
+import { useDeleteContactMutation } from '../../../../redux/api';
+import s from './ContactItem.module.css';
 
 export const ContactItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
