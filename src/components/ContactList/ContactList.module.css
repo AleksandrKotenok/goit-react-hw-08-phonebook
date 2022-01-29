@@ -1,0 +1,7 @@
+.contactList,.list{
+   display: flex;
+   flex-direction: row;
+}
+.list{
+   flex-direction: column;
+}
