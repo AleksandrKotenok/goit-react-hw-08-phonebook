@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../routes';
 import s from './Login.module.css';
-export default function Login() {
+export const Login = () => {
   return (
     <>
-      <h1>Login</h1>
+      <h1>Authorization</h1>
       <form className={s.form} autoComplete="off">
         <label className={s.label} htmlFor={'login'}>
           Email:
@@ -28,10 +30,17 @@ export default function Login() {
           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           required
         />
-        <button className={s.button} type="submit">
-          Login
-        </button>
+        <div className={s.buttonBox}>
+          <button className={s.button} type="submit">
+            Sign in
+          </button>
+          <button className={s.button} type="submit">
+            <Link className={s.link} to={ROUTES.Register}>
+              Sign up
+            </Link>
+          </button>
+        </div>
       </form>
     </>
   );
-}
+};

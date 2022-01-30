@@ -2,7 +2,7 @@ import s from './Register.module.css';
 export default function Register() {
   return (
     <>
-      <h1>Register</h1>
+      <h1>Registration</h1>
       <form className={s.form} autoComplete="off">
         <label className={s.label} htmlFor={'regName'}>
           Name:
@@ -41,7 +41,7 @@ export default function Register() {
           required
         />
         <button className={s.button} type="submit">
-          Register
+          Sign up
         </button>
       </form>
     </>
