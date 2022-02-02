@@ -1,11 +1,26 @@
 import { Link } from 'react-router-dom';
+import { useSignInMutation } from '../../redux/api';
 import { ROUTES } from '../../routes';
 import s from './Login.module.css';
 export const Login = () => {
+  const [createUser, { isLoading }] = useSignInMutation();
+  const submitSignIn = e => {
+    e.preventDefault();
+    const user = {
+      email: e.currentTarget.elements.email.value,
+      password: e.currentTarget.elements.password.value,
+    };
+    console.log('user:', user);
+    createUser(user).then(({ data }) => {
+      console.log(data);
+      window.alert(` User: ${data.user.name} LOGINED! `);
+    });
+    e.currentTarget.reset();
+  };
   return (
     <>
       <h1>Authorization</h1>
-      <form className={s.form} autoComplete="off">
+      <form className={s.form} autoComplete="off" onSubmit={submitSignIn}>
         <label className={s.label} htmlFor={'login'}>
           Email:
         </label>
@@ -34,7 +49,7 @@ export const Login = () => {
           <button className={s.button} type="submit">
             Sign in
           </button>
-          <button className={s.button} type="submit">
+          <button className={s.buttonUp} type="submit">
             <Link className={s.link} to={ROUTES.Register}>
               Sign up
             </Link>

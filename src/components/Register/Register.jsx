@@ -1,9 +1,27 @@
+import { useSignUpMutation } from '../../redux/api';
+
 import s from './Register.module.css';
 export default function Register() {
+  const [createUser, { isLoading }] = useSignUpMutation();
+  const submitUser = e => {
+    e.preventDefault();
+    const newUser = {
+      name: e.currentTarget.elements.name.value,
+      email: e.currentTarget.elements.email.value,
+      password: e.currentTarget.elements.password.value,
+    };
+    console.log('newUser:', newUser);
+    createUser(newUser).then(({ data }) => {
+      window.alert(
+        ` User: ${data.user.name} created! Email: ${data.user.email}`
+      );
+    });
+    e.currentTarget.reset();
+  };
   return (
     <>
       <h1>Registration</h1>
-      <form className={s.form} autoComplete="off">
+      <form className={s.form} autoComplete="off" onSubmit={submitUser}>
         <label className={s.label} htmlFor={'regName'}>
           Name:
         </label>

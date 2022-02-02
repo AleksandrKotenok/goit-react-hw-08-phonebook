@@ -3,13 +3,13 @@ import { combineReducers } from 'redux';
 import { filCont } from './contacts-actions';
 
 export const initialStore = {
-  contacts: {
-    filter: '',
-  },
+  user: { name: null, email: null },
+  token: null,
+  filter: null,
 };
 // Reducer
 
-const filter = createReducer(initialStore.contacts.filter, {
+const filter = createReducer(initialStore.filter, {
   [filCont]: (state, { payload }) => payload,
 });
 
