@@ -2,7 +2,7 @@ import AddForm from './AddForm/AddForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 
-export default function Contacts() {
+export const Contacts = () => {
   return (
     <>
       <h1>Phonebook</h1>
@@ -12,4 +12,4 @@ export default function Contacts() {
       <ContactList />
     </>
   );
-}
+};

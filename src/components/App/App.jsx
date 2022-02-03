@@ -1,15 +1,14 @@
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 //import { lazy, Suspense } from 'react';
 import { Login } from '../Login/Login';
-import Contacts from '../Contacts/Contacts';
+import { Contacts } from '../Contacts/Contacts';
 import Register from '../Register/Register';
 import { AppBar } from '../AppBar/AppBar';
 import { Home } from '../Home/Home';
-import icon from '../../images/phonebook.png';
 import { ROUTES } from '../../routes';
 import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
-//const Login = lazy(() => import('../Login/Login'));
+
 export default function App() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   console.log(isLoggedIn);
@@ -21,7 +20,7 @@ export default function App() {
         <Route path={ROUTES.Login} exact element={<Login />} />
         <Route path={ROUTES.Register} exact element={<Register />} />
         <Route path={ROUTES.Contacts} exact element={<Contacts />} />
-        {/* <Route path="*" element={<Navigate to="/" />} /> */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
