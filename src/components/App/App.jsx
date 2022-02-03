@@ -4,34 +4,24 @@ import { useSelector } from 'react-redux';
 import { Login } from '../Login/Login';
 import Contacts from '../Contacts/Contacts';
 import Register from '../Register/Register';
-import { UserMenu } from '../UserMenu/UserMenu';
+import { AppBar } from '../AppBar/AppBar';
+import { Home } from '../Home/Home';
 import icon from '../../images/phonebook.png';
 import { ROUTES } from '../../routes';
+import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
 //const Login = lazy(() => import('../Login/Login'));
 export default function App() {
-  const isLoggedIn1 = useSelector(
-    state => state.users.mutations.peNVZ5SlYnAmUJz0Ms9rb
-  );
-  console.log(isLoggedIn1);
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  console.log(isLoggedIn);
   return (
     <>
-      <header>
-        <Link to={ROUTES.Login}>
-          <img src={icon} alt="icon" width="50px" height="35px" />
-        </Link>
-      </header>
+      <AppBar />
       <Routes>
-        {isLoggedIn ? (
-          <Route path="/" element={<UserMenu />} />
-        ) : (
-          <Route path={ROUTES.Login} element={<Login />} />
-        )}
-        <Route path="/" element={<UserMenu />} />
-        <Route path={ROUTES.Login} element={<Login />} />
-        <Route path={ROUTES.Register} element={<Register />} />
-        <Route path={ROUTES.Contacts} element={<Contacts />} />
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path={ROUTES.Home} exact element={<Home />} />
+        <Route path={ROUTES.Login} exact element={<Login />} />
+        <Route path={ROUTES.Register} exact element={<Register />} />
+        <Route path={ROUTES.Contacts} exact element={<Contacts />} />
+        {/* <Route path="*" element={<Navigate to="/" />} /> */}
       </Routes>
     </>
   );
