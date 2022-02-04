@@ -27,15 +27,15 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
-    [getCurrentUser.fulfilled](state, { payload }) {
-      state.user = payload;
-      state.isLoggedIn = true;
-      state.isFetchingCurrentUser = false;
-    },
     [getCurrentUser.pending](state) {
       state.isFetchingCurrentUser = true;
     },
     [getCurrentUser.rejected](state) {
+      state.isFetchingCurrentUser = false;
+    },
+    [getCurrentUser.fulfilled](state, { payload }) {
+      state.user = payload;
+      state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
     },
   },
