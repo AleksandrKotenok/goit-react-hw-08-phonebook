@@ -1,21 +1,9 @@
-import { useCreateContactMutation } from '../../../redux/api';
-
 import s from '../AddForm/AddForm.module.css';
 
 export default function AddForm() {
-  const [createContact, { isLoading }] = useCreateContactMutation();
-  const submitContact = e => {
-    e.preventDefault();
-    const newContact = {
-      name: e.currentTarget.elements.name.value,
-      number: e.currentTarget.elements.number.value,
-    };
-    createContact(newContact);
-    e.currentTarget.reset();
-  };
   return (
     <section className={s.addForm}>
-      <form className={s.form} autoComplete="off" onSubmit={submitContact}>
+      <form className={s.form} autoComplete="off">
         <label className={s.label} htmlFor={'name'}>
           Name:
         </label>
@@ -40,8 +28,8 @@ export default function AddForm() {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <button className={s.button} type="submit" disabled={isLoading}>
-          {isLoading ? `Adding...` : `Add contact`}
+        <button className={s.button} type="submit">
+          Save Contact
         </button>
       </form>
     </section>
