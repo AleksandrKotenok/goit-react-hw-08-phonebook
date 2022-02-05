@@ -1,3 +1,4 @@
+import s from './Home.module.css';
 export default function Home() {
-  return <h1>BEST PHONEBOOK</h1>;
+  return <h1 className={s.home}>BEST PHONEBOOK</h1>;
 }

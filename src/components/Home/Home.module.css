@@ -1,0 +1,6 @@
+.home{
+   display: flex;
+   justify-content: center;
+   margin-top: 150px;
+   color: rgb(81, 81, 251);;
+}

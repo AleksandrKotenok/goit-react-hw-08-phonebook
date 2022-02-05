@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { logIn } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/auth-operations';
 
 import s from './Login.module.css';
 

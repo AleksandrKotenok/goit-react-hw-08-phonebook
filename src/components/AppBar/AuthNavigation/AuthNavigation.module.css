@@ -4,4 +4,12 @@
 }
 .link{
    margin-right: 15px;
+   text-decoration: none;
+   color: black;
+   border-radius: 4px;
+}
+.link:focus,.link:hover{
+   background-color: rgba(81, 81, 251, 0.507);
+   box-shadow: 0px 0px 5px 5px rgba(151, 113, 194, 0.568);
+   transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
