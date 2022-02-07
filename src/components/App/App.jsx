@@ -3,20 +3,20 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppBar } from '../AppBar/AppBar';
-import { ROUTES } from '../Routes/routes';
-import { FetchingCurrentUser } from '../../redux/auth/auth-selectors';
+import { ROUTES } from '../routes/routes';
+import { fetchingCurrentUser } from '../../redux/auth/auth-selectors';
 import { getCurrentUser } from '../../redux/auth/auth-operations';
-import PrivateRoute from '../Routes/PrivateRoute';
-import PublicRoute from '../Routes/PublicRoute';
+import PrivateRoute from '../routes/PrivateRoute';
+import PublicRoute from '../routes/PublicRoute';
 
-const AsyncHome = lazy(() => import('../Home/Home'));
-const AsyncRegister = lazy(() => import('../Register/Register'));
-const AsyncLogin = lazy(() => import('../Login/Login'));
-const AsyncContacts = lazy(() => import('../Contacts/Contacts'));
+const AsyncHome = lazy(() => import('../views/Home/Home'));
+const AsyncRegister = lazy(() => import('../views/Register/Register'));
+const AsyncLogin = lazy(() => import('../views/Login/Login'));
+const AsyncContacts = lazy(() => import('../views/Contacts/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(FetchingCurrentUser);
+  const isFetchingCurrentUser = useSelector(fetchingCurrentUser);
 
   useEffect(() => {
     dispatch(getCurrentUser());

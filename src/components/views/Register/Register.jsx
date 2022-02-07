@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/auth-operations';
+import { register } from '../../../redux/auth/auth-operations';
 
-import s from './Login.module.css';
+import s from './Register.module.css';
 
-export default function Login() {
+export default function Register() {
   const dispatch = useDispatch();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
+      case 'name':
+        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -22,20 +25,34 @@ export default function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(logIn({ email, password }));
+    dispatch(register({ name, email, password }));
+    setName('');
     setEmail('');
     setPassword('');
   };
-
   return (
     <>
-      <h1>Authorization</h1>
+      <h1>Registration</h1>
       <form className={s.form} autoComplete="off" onSubmit={handleSubmit}>
-        <label className={s.label} htmlFor={'login'}>
+        <label className={s.label} htmlFor={'regName'}>
+          Name:
+        </label>
+        <input
+          id={'regName'}
+          className={s.input}
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+          onChange={handleChange}
+          value={name}
+        />
+        <label className={s.label} htmlFor={'email'}>
           Email:
         </label>
         <input
-          id={'login'}
+          id={'email'}
           className={s.input}
           type="email"
           name="email"
@@ -45,11 +62,11 @@ export default function Login() {
           onChange={handleChange}
           value={email}
         />
-        <label className={s.label} htmlFor={'pass'}>
+        <label className={s.label} htmlFor={'password'}>
           Password:
         </label>
         <input
-          id={'pass'}
+          id={'password'}
           className={s.input}
           type="password"
           name="password"
@@ -59,11 +76,9 @@ export default function Login() {
           onChange={handleChange}
           value={password}
         />
-        <div className={s.buttonBox}>
-          <button className={s.button} type="submit">
-            Sign in
-          </button>
-        </div>
+        <button className={s.button} type="submit">
+          Sign up
+        </button>
       </form>
     </>
   );

@@ -8,7 +8,7 @@ import {
 import { changeFilter } from './contacts-actions';
 
 const items = createReducer([], {
-  [fetchContacts.fulfilled]: (_, { payload }) => payload,
+  [fetchContacts.fulfilled]: (_state, { payload }) => payload,
   [addContact.fulfilled]: (state, { payload }) => [...state, payload],
   [deleteContact.fulfilled]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
@@ -19,5 +19,5 @@ const filter = createReducer('', {
 
 export default combineReducers({
   items,
-  filter
+  filter,
 });

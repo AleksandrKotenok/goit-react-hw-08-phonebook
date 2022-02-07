@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/auth-operations';
+import { logIn } from '../../../redux/auth/auth-operations';
 
-import s from './Register.module.css';
+import s from './Login.module.css';
 
-export default function Register() {
+export default function Login() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'name':
-        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -25,34 +22,20 @@ export default function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(register({ name, email, password }));
-    setName('');
+    dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
   };
+
   return (
     <>
-      <h1>Registration</h1>
+      <h1>Authorization</h1>
       <form className={s.form} autoComplete="off" onSubmit={handleSubmit}>
-        <label className={s.label} htmlFor={'regName'}>
-          Name:
-        </label>
-        <input
-          id={'regName'}
-          className={s.input}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          onChange={handleChange}
-          value={name}
-        />
-        <label className={s.label} htmlFor={'email'}>
+        <label className={s.label} htmlFor={'login'}>
           Email:
         </label>
         <input
-          id={'email'}
+          id={'login'}
           className={s.input}
           type="email"
           name="email"
@@ -62,11 +45,11 @@ export default function Register() {
           onChange={handleChange}
           value={email}
         />
-        <label className={s.label} htmlFor={'password'}>
+        <label className={s.label} htmlFor={'pass'}>
           Password:
         </label>
         <input
-          id={'password'}
+          id={'pass'}
           className={s.input}
           type="password"
           name="password"
@@ -76,9 +59,11 @@ export default function Register() {
           onChange={handleChange}
           value={password}
         />
-        <button className={s.button} type="submit">
-          Sign up
-        </button>
+        <div className={s.buttonBox}>
+          <button className={s.button} type="submit">
+            Sign in
+          </button>
+        </div>
       </form>
     </>
   );

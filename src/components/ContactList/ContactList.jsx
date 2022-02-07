@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchContacts,
   deleteContact,
-} from '../../../redux/contacts/contacts-operations';
-import { getVisibleContacts } from '../../../redux/contacts/contacts-selectors';
+} from '../../redux/contacts/contacts-operations';
+import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
 
 import s from './ContactList.module.css';
 

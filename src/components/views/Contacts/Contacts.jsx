@@ -1,6 +1,6 @@
-import AddForm from './AddForm/AddForm';
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
+import AddForm from '../../AddForm/AddForm';
+import Filter from '../../Filter/Filter';
+import ContactList from '../../ContactList/ContactList';
 
 export default function Contacts() {
   return (
